@@ -4,19 +4,17 @@ import databaseConfig from '../config/database';
 
 import User from '../app/models/User';
 
-class Database {
-  public connection: Sequelize;
+const models: Model[] = [User];
 
-  public models: Model[];
+class Database {
+  public connection: Sequelize = new Sequelize(databaseConfig);
 
   constructor() {
-    this.connection = new Sequelize(databaseConfig);
-    this.models = [User];
     this.init();
   }
 
-  init() {
-    this.models
+  protected init() {
+    models
       .map(model => model.init(this.connection))
       .map(model => model.associate && model.associate(this.connection.models));
   }

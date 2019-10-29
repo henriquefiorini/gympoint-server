@@ -2,7 +2,7 @@ import { Sequelize, Model, DataTypes } from 'sequelize';
 import bcrypt from 'bcryptjs';
 
 class User extends Model {
-  static load(sequelize: Sequelize) {
+  static init(sequelize: Sequelize) {
     return super.init(
       {
         name: DataTypes.STRING,
