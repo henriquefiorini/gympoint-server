@@ -1,15 +1,15 @@
-import express from 'express';
+import { Router as ExpressRouter, Response } from 'express';
 
 class Router {
-  routes: express.Router;
+  public routes: ExpressRouter;
 
-  constructor() {
-    this.routes = express.Router();
+  public constructor() {
+    this.routes = ExpressRouter();
     this.init();
   }
 
-  init() {
-    this.routes.get('/', (_, res: express.Response) => {
+  private init() {
+    this.routes.get('/', (_, res: Response) => {
       return res.json('Hello World!');
     });
   }
